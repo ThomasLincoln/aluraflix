@@ -52,6 +52,7 @@ var filmes = [
 var captura = "";
 var resposta = "";
 
+//for pra mostrar as imagens e os titulos assim q o site é aberto
 var lista = document.getElementById("listaDeFilme");
 for (var i = 0; i < filmes.length; i++) {
     const listItem = document.createElement("li");
@@ -61,18 +62,36 @@ for (var i = 0; i < filmes.length; i++) {
         <img src="${filmes[i].imagem}" />
         <p> ${filmes[i].titulo}</p>
         </div>
-    `
+        `
     lista.appendChild(listItem);
 }
-
+function mostrarTudo() {
+    //for pra mostrar as imagens e os titulos assim q o site é aberto
+    var lista = document.getElementById("listaDeFilme");
+    for (var i = 0; i < filmes.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.classList.add("itens")
+        listItem.innerHTML = `
+                <div class="center">
+                <img src="${filmes[i].imagem}" />
+                <p> ${filmes[i].titulo}</p>
+                </div>
+                `
+        lista.appendChild(listItem);
+    }
+}
+//ler o input de pesquisa
 function lerInput() {
-    resposta = document.querySelector("#resposta");
+    captura = document.getElementById("resposta").value;
+    resposta = captura.toLowerCase();
 }
 
+//função para pesquisar, ele verifica a resposta do usuario e pesquisa algum elemento
+//do array q tenha uma string igual
 function pesquisa() {
     lerInput()
     lista.innerHTML = ""
-    for (filme of filmes) {   
+    for (filme of filmes) {
         if (filme.titulo.toLowerCase().startsWith(resposta)) {
             const listItem = document.createElement("li");
             listItem.classList.add("itens")
@@ -84,5 +103,17 @@ function pesquisa() {
             `
             lista.appendChild(listItem);
         }
+    }
+}
+
+// Seleciona todos os elementos de determinada tag
+var elementos_a = document.getElementsByTagName('a');
+
+// Percorre os elementos. 
+for (var i = 0; i < elementos_a.length; i++) {
+    /* Adiciona o evento em cada um dos elementos por meio do seu índice no array */        
+    elementos_a[0].onclick = function() {
+        lista.innerHTML= ""
+        mostrarTudo()
     }
 }

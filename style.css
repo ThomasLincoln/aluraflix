@@ -44,7 +44,7 @@ table {
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #0c0c0c;
+    background-color: #272525;
 }
 
 nav{
@@ -61,6 +61,7 @@ nav{
 
 .flix{
     color:#30BDEA;
+    cursor: pointer;
 }
 .menuSearch{
     margin-left: auto;
